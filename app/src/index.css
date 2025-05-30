@@ -6,3 +6,12 @@ html{
 main{
     background: #E1E5E9;
 }
+
+.container{
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    @media (max-width: 1200px) {
+        padding: 0 15px;
+    }
+}
