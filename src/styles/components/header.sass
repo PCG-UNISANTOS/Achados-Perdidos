@@ -1,9 +1,20 @@
 .header
   padding-block: 20px
-  background: $brand-color
+  background: #fff
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1)
   &-container
     @extend .wrapper
     display: flex
+    flex-direction: row
+    align-items: center
+    justify-content: space-between
+    gap: 40px
+    .box-logo
+      display: flex
+      img
+        width: auto
+        max-height: 80px
+
     &-listagem
       display: flex
       flex-direction: row
@@ -11,4 +22,19 @@
 
       &__item
         .link
+          display: flex
+          flex-direction: row
+          align-items: center
+          gap: 5px
           text-decoration: none
+          color: $text-color
+          font-size: 1em
+          font-weight: 600
+          cursor: pointer
+
+          &:hover
+            text-decoration: underline
+
+          svg
+            path
+              fill: $text-color

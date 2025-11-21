@@ -1,13 +1,19 @@
 import "./styles/main.sass";
-import Header from "./components/Header";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import Listagem from "./pages/Listagem";
 
 function App() {
   return (
     <>
-      <Header />
-      <h1>REACT + SASS</h1>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/listagem" element={<Listagem />} />
+        </Routes>
+      </BrowserRouter>
     </>
-  )
+  );
 }
 
-export default App
+export default App;

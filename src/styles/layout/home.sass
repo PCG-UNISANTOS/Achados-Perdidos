@@ -1,0 +1,138 @@
+.home-section
+  padding-block: 60px
+  &-container
+    @extend .wrapper
+    display: flex
+    flex-direction: column
+    .box-logo
+      display: flex
+      width: 100%
+      justify-content: center
+      img
+        max-width: 300px
+        width: 100%
+        height: auto
+        +media-query(700px)
+          max-width: 200px
+
+    .box-texto
+      display: flex
+      flex-direction: column
+      gap: 30px
+      justify-content: center
+      align-items: center
+      margin-block: 40px
+
+      h1
+        font-size: 3.75em
+        background: linear-gradient(to right, $brand-color, $tertiary-color)
+        -webkit-background-clip: text
+        -webkit-text-fill-color: transparent
+        line-height: 60px
+        +media-query(700px)
+          font-size: 2.5em
+          line-height: 40px
+          text-align: center
+
+      p
+        font-size: 1.5em
+        color: $text-color-secondary
+        line-height: 1.5em
+        text-align: center
+        max-width: 700px
+        +media-query(700px)
+          font-size: 1.2em
+
+      &__buttons
+        display: flex
+        flex-direction: row
+        align-items: center
+        gap: 15px
+        +media-query(420px)
+          flex-direction: column
+          width: 100%
+
+        .btn-login
+          display: flex
+          width: fit-content
+          border-radius: $border-radius
+          padding: 12px 24px
+          color: $text-color-light
+          background: $tertiary-color
+          font-size: 1em
+          font-weight: 600
+          text-decoration: none
+          border: 1px solid transparent
+          transition: ease-in 0.3s
+          &:hover
+            background: darken($tertiary-color, 5)
+          +media-query(420px)
+            width: 100%
+            justify-content: center
+
+        .btn-listagem
+          display: flex
+          width: fit-content
+          border-radius: $border-radius
+          padding: 12px 24px
+          color: $text-color
+          background: tranparent
+          font-size: 1em
+          font-weight: 600
+          text-decoration: none
+          border: 1px solid $border-color
+          transition: ease-in 0.3s
+          &:hover
+            background: $accent-color-green
+            color: $text-color-light
+          +media-query(420px)
+            width: 100%
+            justify-content: center
+
+    .listagem
+      display: grid
+      grid-template-columns: repeat(3, 1fr)
+      gap: 30px
+      +media-query(700px)
+        grid-template-columns: 1fr
+      &-item
+        background: #fff
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1)
+        border-radius: $border-radius
+        padding: 20px
+        height: 100%
+        display: flex
+        flex-direction: column
+        align-items: center
+        gap: 10px
+
+        .box-icone
+          padding: 10px
+          display: flex
+          justify-content: center
+          align-items: center
+          border-radius: $border-radius
+          background: $brand-color
+          svg
+            width: 30px
+            height: auto
+            path
+              fill: transparent
+              stroke: #fff
+            line
+              color: #fff
+            polyline
+              color: #fff
+
+        h3
+          font-size: 1em
+          color: $text-color
+          text-align: center
+          font-weight: 600
+
+        p
+          font-size: 0.875em
+          color: $text-color-secondary
+          text-align: center
+          font-weight: 400
+          line-height: 22px
