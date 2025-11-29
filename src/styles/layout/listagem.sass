@@ -1,0 +1,38 @@
+.listagem-section
+  padding-block: 30px
+  &-container
+    @extend .wrapper
+    display: flex
+    flex-direction: column
+    gap: 40px
+
+    &__header
+      display: flex
+      flex-direction: column
+      .titulo
+        display: flex
+        flex-direction: row
+        gap: 10px
+        align-items: center
+
+        h1
+          font-size: 2em
+          font-weight: 700
+          margin: 0px
+          color: $text-color
+
+        svg
+          width: 32px
+          height: auto
+
+      p
+        font-size: 1em
+        color: $text-color-secondary
+        margin: 0px
+        font-weight: 400
+
+    &__content
+      @extend .lista-limpa
+      display: grid
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr))
+      gap: 30px
