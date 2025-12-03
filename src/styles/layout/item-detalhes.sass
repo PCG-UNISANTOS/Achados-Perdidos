@@ -8,20 +8,25 @@
       display: grid
       grid-template-columns: 580px 1fr
       gap: 30px
+      +media-query(1000px)
+        grid-template-columns: 1fr
 
       .slider-container
         display: flex
         width: 100%
-        height: 600px
-        max-width: 580px
+        height: fit-content
+        position: relative
+        overflow: hidden
 
         .swiper
+          width: 100%
+          height: fit-content
           border-radius: $border-radius
           &-slide
             border-radius: $border-radius
             img
               width: 100%
-              height: 600px
+              height: 450px
               object-fit: cover
               border-radius: $border-radius
               object-position: center
@@ -30,6 +35,7 @@
             background: $button-color
             border-radius: $border-radius
             left: 10px
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1)
 
             svg
               width: 12px
@@ -41,9 +47,165 @@
             background: $button-color
             border-radius: $border-radius
             right: 10px
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1)
 
             svg
               width: 12px
               height: 12px
               path
                 fill: #000
+
+      .box-texto
+        display: flex
+        flex-direction: column
+        gap: 15px
+
+        .titulo-tag
+          display: flex
+          flex-direction: row
+          align-items: center
+          justify-content: space-between
+          gap: 20px
+          +media-query(1100px)
+            flex-direction: column
+            gap: 5px
+            align-items: flex-start
+
+          h2
+            font-size: 1.875em
+            color: $text-color
+            font-weight: 600
+            margin: 0px
+
+          span
+            border-radius: $border-radius
+            padding: 3px 10px
+            font-size: 0.875em
+            color: $text-color-light
+            font-weight: 700
+            width: fit-content
+            &.DISPONIVEL
+              background: $disponivel
+
+            &.INDISPONIVEL
+              background: $indisponivel
+
+            &.DEVOLUCAO
+              background: $em-andamento
+
+            &.REIVINDICADO
+              background: $reivindicado
+
+        p
+          font-size: 1em
+          line-height: 26px
+          color: $text-color-secondary
+          margin: 0px
+          font-weight: 400
+
+        .box-detalhes
+          display: flex
+          flex-direction: column
+          gap: 15px
+          margin-top: 10px
+          padding: 30px
+          border: 1px solid $border-color
+          background: $text-color-light
+          border-radius: $border-radius
+
+          &__local
+            display: grid
+            grid-template-columns: 20px auto
+            gap: 12px
+            svg
+              width: 20px
+              height: 20px
+              path
+                fill: transparent
+                stroke: $brand-color
+              line
+                color: $brand-color
+              polyline
+                color: $brand-color
+
+            .titulo
+              display: flex
+              flex-direction: column
+              gap: 5px
+
+              h4
+                font-size: 1em
+                color: $text-color
+                font-weight: 600
+                margin: 0px
+                line-height: 16px
+
+              span
+                font-size: 1em
+                color: $text-color-secondary
+                font-weight: 400
+                margin: 0px
+                line-height: 16px
+
+          &__data
+            display: grid
+            grid-template-columns: 20px auto
+            gap: 12px
+            svg
+              width: 20px
+              height: 20px
+              path
+                fill: transparent
+                stroke: $brand-color
+              line
+                color: $brand-color
+              polyline
+                color: $brand-color
+
+            .titulo
+              display: flex
+              flex-direction: column
+              gap: 5px
+
+              h4
+                font-size: 1em
+                color: $text-color
+                font-weight: 600
+                margin: 0px
+                line-height: 16px
+
+              time
+                font-size: 1em
+                color: $text-color-secondary
+                font-weight: 400
+                margin: 0px
+                line-height: 16px
+
+          &__infos
+            display: grid
+            grid-template-columns: 20px auto
+            gap: 12px
+            svg
+              width: 20px
+              height: 20px
+              path
+                fill: $brand-color
+
+            .titulo
+              display: flex
+              flex-direction: column
+              gap: 5px
+
+              h4
+                font-size: 1em
+                color: $text-color
+                font-weight: 600
+                margin: 0px
+                line-height: 16px
+
+              span
+                font-size: 1em
+                color: $text-color-secondary
+                font-weight: 400
+                margin: 0px
+                line-height: 16px

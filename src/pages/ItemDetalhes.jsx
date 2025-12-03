@@ -1,9 +1,12 @@
-import React from "react";
-import itemImg from "../Arquitetura/Imagens/item1.jpeg";
 import Header from "../components/Header";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
+import {
+  HiOutlineLocationMarker,
+  HiOutlineCalendar,
+  HiPaperClip,
+} from "react-icons/hi";
 
 import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
 
@@ -38,6 +41,7 @@ export default function ItemDetalhes() {
         item.imagem?.urlimagem3,
       ].filter(Boolean)
     : [];
+
   return (
     <>
       <Header />
@@ -69,14 +73,41 @@ export default function ItemDetalhes() {
             <div className="box-texto">
               <div className="titulo-tag">
                 <h2>{item?.nome}</h2>
-                <span>{statusText[item?.status]}</span>
+                <span className={item?.status}>{statusText[item?.status]}</span>
               </div>
               <p>{item?.descricao}</p>
+
+              <div className="box-detalhes">
+                <div className="box-detalhes__local">
+                  <HiOutlineLocationMarker />
+                  <div className="titulo">
+                    <h4>Local</h4>
+                    <span>{item?.local.nome}</span>
+                  </div>
+                </div>
+
+                <div className="box-detalhes__data">
+                  <HiOutlineCalendar />
+                  <div className="titulo">
+                    <h4>Data</h4>
+                    <time>
+                      {new Date(item?.dataachado).toLocaleDateString("pt-BR")}
+                    </time>
+                  </div>
+                </div>
+
+                <div className="box-detalhes__infos">
+                  <HiPaperClip />
+                  <div className="titulo">
+                    <h4>Informações adicionais</h4>
+                    <p>{item?.local.descricao}</p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </section>
-      {/* <h1>{item.nome}</h1> */}
     </>
   );
 }
