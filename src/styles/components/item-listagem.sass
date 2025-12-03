@@ -27,16 +27,16 @@
       color: $text-color-light
       font-weight: 700
 
-      &.disponivel
+      &.DISPONIVEL
         background: $disponivel
 
-      &.indisponivel
+      &.INDISPONIVEL
         background: $indisponivel
 
-      &.em-andamento
+      &.DEVOLUCAO
         background: $em-andamento
 
-      &.reivindicado
+      &.REIVINDICADO
         background: $reivindicado
 
   .box-infos
@@ -107,14 +107,17 @@
       text-decoration: none
       text-align: center
 
-      &.disponivel
+      &.DISPONIVEL
         background: $disponivel
 
-      &.indisponivel
+      &.INDISPONIVEL
         background: $indisponivel
+        cursor: not-allowed
 
-      &.em-andamento
+      &.DEVOLUCAO
         background: $em-andamento
+        cursor: not-allowed
 
-      &.reivindicado
+      &.REIVINDICADO
         background: $reivindicado
+        cursor: not-allowed

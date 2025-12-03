@@ -1,60 +1,59 @@
 import React from "react";
-import itemImg from "../Arquitetura/Imagens/item1.jpeg";
-import { FaCalendarAlt } from "react-icons/fa";
+import { Link } from "react-router-dom";
 import { HiOutlineLocationMarker, HiOutlineCalendar } from "react-icons/hi";
 
 export default function ItemListagem({
-  imagem,
-  titulo,
+  id,
+  nome,
   descricao,
-  local,
-  data,
   status,
+  dataachado,
+  categoria,
+  local,
+  imagem,
 }) {
+  const dataFormatada = new Date(dataachado).toLocaleDateString("pt-BR");
+
   const statusText = {
-    disponivel: "Disponível",
-    indisponivel: "Indisponível",
-    emDevolucao: "Em devolução",
-    reivindicado: "Reivindicado",
+    DISPONIVEL: "Disponível",
+    INDISPONIVEL: "Indisponível",
+    DEVOLUCAO: "Em devolução",
+    REIVINDICADO: "Reivindicado",
   };
   return (
     <>
       <li className="listagem-item">
         <div className="box-img">
-          <img src={imagem} alt={titulo} />
+          <img src={imagem?.urlimagem1} alt={nome} />
           <span className={`box-img__tag ${status}`}>{statusText[status]}</span>
         </div>
 
         <div className="box-infos">
-          <h2>{titulo}</h2>
+          <h2>{nome}</h2>
           <p>{descricao}</p>
 
           <div className="box-infos__local">
             <HiOutlineLocationMarker />
-            <span>{local}</span>
+            <span>{local?.nome}</span>
           </div>
 
           <div className="box-infos__data">
             <HiOutlineCalendar />
-            <span>{data}</span>
+            <span>{dataFormatada}</span>
           </div>
 
-          {status === "disponivel" ? (
-            <a
-              href="/"
+          {status === "DISPONIVEL" ? (
+            <Link
+              to={`/item/${id}`}
               className={`box-infos__redirect ${status}`}
               title="Ver detalhes"
             >
               Ver detalhes
-            </a>
+            </Link>
           ) : (
-            <a
-              href="/"
-              className={`box-infos__redirect ${status}`}
-              title="Ver detalhes"
-            >
+            <div className={`box-infos__redirect ${status}`}>
               {statusText[status]}
-            </a>
+            </div>
           )}
         </div>
       </li>
