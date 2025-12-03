@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import logo from "../Arquitetura/Icones/logo/logo.png";
 import { FaHome, FaList } from "react-icons/fa";
@@ -14,17 +15,17 @@ const Header = () => {
 
           <ul className="header-container-listagem">
             <li className="header-container-listagem__item">
-              <a className="link" href="/">
+              <Link className="link" to="/">
                 <FaHome />
                 Home
-              </a>
+              </Link>
             </li>
 
             <li className="header-container-listagem__item">
-              <a className="link" href="/listagem">
+              <Link className="link" to="/listagem">
                 <FaList />
                 Itens
-              </a>
+              </Link>
             </li>
           </ul>
         </div>
