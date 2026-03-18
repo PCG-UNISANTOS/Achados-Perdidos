@@ -3,6 +3,7 @@ import { useState } from "react";
 import { IMaskInput } from "react-imask";
 import Header from "../components/Header";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 export default function Login() {
   const {
@@ -30,42 +31,6 @@ export default function Login() {
 
           <div className="login-section-container__content">
             <form onSubmit={handleSubmit(onSubmit)}>
-              {/* CPF */}
-              <div className="item-input">
-                <label>CPF</label>
-                <Controller
-                  name="cpf"
-                  control={control}
-                  rules={{ required: true }}
-                  render={({ field }) => (
-                    <IMaskInput
-                      {...field}
-                      mask="000.000.000-00"
-                      unmask={false}
-                      placeholder="000.000.000-00"
-                    />
-                  )}
-                />
-              </div>
-
-              {/* Telefone */}
-              <div className="item-input">
-                <label>Telefone</label>
-                <Controller
-                  name="telefone"
-                  control={control}
-                  rules={{ required: true }}
-                  render={({ field }) => (
-                    <IMaskInput
-                      {...field}
-                      mask="(00) 00000-0000"
-                      unmask={false}
-                      placeholder="(00) 00000-0000"
-                    />
-                  )}
-                />
-              </div>
-
               {/* Email */}
               <div className="item-input">
                 <label>Email</label>
@@ -91,10 +56,14 @@ export default function Login() {
                   </span>
                 </div>
               </div>
-
-              <button type="submit" className="success-button">
-                Entrar
-              </button>
+              <div className="box-buttons">
+                <Link to="/registre" className="btn-criar-conta">
+                  Crie sua conta
+                </Link>
+                <button type="submit" className="success-button">
+                  Entrar
+                </button>
+              </div>
             </form>
           </div>
         </div>

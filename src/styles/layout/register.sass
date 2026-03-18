@@ -1,4 +1,4 @@
-.login-section
+.register-section
   margin-block: 30px
   &-container
     @extend .wrapper
@@ -67,59 +67,27 @@
               right: 0px
               cursor: pointer
               padding-right: 25px
-        .box-buttons
+
+        .success-button
           display: flex
-          flex-direction: row
-          gap: 10px
-          grid-column: 1 / -1
-          justify-content: flex-end
-          width: 100%
+          background: $tertiary-color
+          padding: 14px 8px
+          border: none
+          width: fit-content
+          min-width: 200px
+          font-size: 1em
+          color: $text-color-light
+          font-weight: 600
+          align-items: center
+          justify-content: center
+          cursor: pointer
+          grid-column: 2
+          justify-self: flex-end
+          transition: ease-in 0.2s
+          border-radius: 10px
           +media-query(600px)
-            flex-direction: column
+            grid-column: 1
+            width: 100%
 
-
-
-          .btn-criar-conta
-            text-decoration: none
-            display: flex
-            background: $accent-color
-            padding: 14px 8px
-            border: none
-            width: fit-content
-            min-width: 200px
-            font-size: 1em
-            color: $text-color-light
-            font-weight: 600
-            align-items: center
-            justify-content: center
-            cursor: pointer
-            justify-self: flex-end
-            transition: ease-in 0.2s
-            border-radius: 10px
-            +media-query(600px)
-              width: 100%
-
-            &:hover
-              background: $accent-color-green
-
-          .success-button
-            display: flex
-            background: $tertiary-color
-            padding: 14px 8px
-            border: none
-            width: fit-content
-            min-width: 200px
-            font-size: 1em
-            color: $text-color-light
-            font-weight: 600
-            align-items: center
-            justify-content: center
-            cursor: pointer
-            justify-self: flex-end
-            transition: ease-in 0.2s
-            border-radius: 10px
-            +media-query(600px)
-              width: 100%
-
-            &:hover
-              background: $accent-color-green
+          &:hover
+            background: $accent-color-green
