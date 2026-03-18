@@ -1,6 +1,8 @@
 import { useForm, Controller } from "react-hook-form";
+import { useState } from "react";
 import { IMaskInput } from "react-imask";
 import Header from "../components/Header";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 export default function Login() {
   const {
@@ -13,61 +15,86 @@ export default function Login() {
   function onSubmit(data) {
     console.log("Dados enviados:", data);
   }
+
+  const [mostrarSenha, setMostrarSenha] = useState(false);
+
   return (
     <>
       <Header />
       <section className="login-section">
         <div className="login-section-container">
           <div className="login-section-container__header">
-            <h1>LOGIN</h1>
+            <h1>Acesse sua conta</h1>
+            <p>Entre e localize seus itens perdidos</p>
           </div>
 
           <div className="login-section-container__content">
             <form onSubmit={handleSubmit(onSubmit)}>
               {/* CPF */}
-              <label>CPF</label>
-              <Controller
-                name="cpf"
-                control={control}
-                rules={{ required: true }}
-                render={({ field }) => (
-                  <IMaskInput
-                    {...field}
-                    mask="000.000.000-00"
-                    unmask={false}
-                    placeholder="000.000.000-00"
-                  />
-                )}
-              />
+              <div className="item-input">
+                <label>CPF</label>
+                <Controller
+                  name="cpf"
+                  control={control}
+                  rules={{ required: true }}
+                  render={({ field }) => (
+                    <IMaskInput
+                      {...field}
+                      mask="000.000.000-00"
+                      unmask={false}
+                      placeholder="000.000.000-00"
+                    />
+                  )}
+                />
+              </div>
 
               {/* Telefone */}
-              <label>Telefone</label>
-              <Controller
-                name="telefone"
-                control={control}
-                rules={{ required: true }}
-                render={({ field }) => (
-                  <IMaskInput
-                    {...field}
-                    mask="(00) 00000-0000"
-                    unmask={false}
-                    placeholder="(00) 00000-0000"
-                  />
-                )}
-              />
+              <div className="item-input">
+                <label>Telefone</label>
+                <Controller
+                  name="telefone"
+                  control={control}
+                  rules={{ required: true }}
+                  render={({ field }) => (
+                    <IMaskInput
+                      {...field}
+                      mask="(00) 00000-0000"
+                      unmask={false}
+                      placeholder="(00) 00000-0000"
+                    />
+                  )}
+                />
+              </div>
 
               {/* Email */}
-              <label>Email</label>
-              <input type="email" {...register("email", { required: true })} />
+              <div className="item-input">
+                <label>Email</label>
+                <input
+                  type="email"
+                  {...register("email", { required: true })}
+                />
+              </div>
 
               {/* Senha */}
-              <label>Senha</label>
-              <input
-                type="password"
-                {...register("senha", { required: true })}
-              />
+              <div className="item-input">
+                <label>Senha</label>
+                <div className="item-input__group">
+                  <input
+                    type={mostrarSenha ? "text" : "password"}
+                    {...register("senha", { required: true })}
+                  />
+                  <span
+                    className="icon"
+                    onClick={() => setMostrarSenha(!mostrarSenha)}
+                  >
+                    {mostrarSenha ? <FaEyeSlash /> : <FaEye />}
+                  </span>
+                </div>
+              </div>
 
-              <button type="submit">Entrar</button>
+              <button type="submit" className="success-button">
+                Entrar
+              </button>
             </form>
           </div>
         </div>
