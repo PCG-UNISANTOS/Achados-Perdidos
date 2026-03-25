@@ -5,6 +5,7 @@ import Listagem from "./pages/Listagem";
 import Registre from "./pages/Registre";
 import ItemDetalhes from "./pages/ItemDetalhes";
 import Login from "./pages/Login";
+import ReivindicarForm from "./pages/ReivindicarForm";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path="/registre" element={<Registre />} />
           <Route path="/login" element={<Login />} />
           <Route path="/item/:id" element={<ItemDetalhes />} />
+          <Route path="/item/:id/reivindicar" element={<ReivindicarForm />} />
         </Routes>
       </BrowserRouter>
     </>
