@@ -6,11 +6,21 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 export default function ReivindicarForm() {
+  const{
+    register,
+    control,
+    handleSubmit,
+    formState: {errors},
+
+  } = useForm();
+
+  function onSubmit(data){
+    console.log("Dados enviados:", data);
+  }
 
   return (
     <>
       <Header />
-
       <section className="reivindicar-section">
         <div className="reivindicar-section-container">
           <div className="reivindicar-section-container__header">
@@ -19,11 +29,27 @@ export default function ReivindicarForm() {
           </div>
 
           <div className="reivindicar-section-container__content">
-            <form></form>
+            <form className="form-grid" onSubmit={handleSubmit(onSubmit)}>
+              <div className="form-grid-item">
+                <label>Nome completo</label>
+                <input type="text" {...register("nome", {required: true})}/>
+              </div>
+
+              <div className="form-grid-item">
+                <label>Email</label>
+                <input type="email" {...register("email", {required: true})}/>
+              </div>
+            </form>
           </div>
         </div>
       </section>
-      {/* <section className="login-section">
+     
+    </>
+  );
+}
+
+
+ {/* <section className="login-section">
         <div className="login-section-container">
           <div className="login-section-container__header">
             <h1>Acesse sua conta</h1>
@@ -69,6 +95,3 @@ export default function ReivindicarForm() {
           </div>
         </div>
       </section> */}
-    </>
-  );
-}

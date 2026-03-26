@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Header from "../components/Header";
 import ItemListagem from "../components/ItemListagem";
 import { FaRegLightbulb } from "react-icons/fa";
+const apiUrl = import.meta.env.VITE_API_URL;
 
 export default function Listagem() {
   const [itens, setItens] = useState([]);
@@ -11,7 +12,7 @@ export default function Listagem() {
     async function carregarItens() {
       try {
         const resposta = await fetch(
-          "https://api-achados.onrender.com/api/listar-itens",
+          `${apiUrl}/listar-itens`,
         );
         const dados = await resposta.json();
         setItens(dados);
