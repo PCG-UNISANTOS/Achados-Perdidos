@@ -1,56 +1,100 @@
 .register-section
-  margin-block: 30px
-  &-container
-    @extend .wrapper
-    display: flex
-    flex-direction: column
-    gap: 15px
+  display: flex
+  width: 100%
+  min-height: 100vh
 
-    &__header
+  &-divisor
+    background-image: url('../../Arquitetura/Imagens/bg-login.png')
+    background-size: cover
+    background-position: center
+    background-repeat: no-repeat
+    width: 50%
+    +media-query(900px)
+      display: none
+
+  &-content
+    display: flex
+    justify-content: center
+    align-items: center
+    padding: 96px
+    width: 50%
+    +media-query(1100px)
+      padding: 40px
+    +media-query(900px)
+      width: 100%
+
+    .box-conteudo
       display: flex
       flex-direction: column
-
-      h1
-        font-size: 2em
-        color: $text-color
-        font-weight: 700
-
-      p
-        font-size: 1.2em
-        color: $text-color-secondary
-        font-weight: 400
-
-    &__content
-      display: flex
+      gap: 30px
       width: 100%
-      form
-        display: grid
-        grid-template-columns: 1fr 1fr
-        gap: 30px
+      align-items: center
+      max-width: 500px
+
+      .box-texto
+        display: flex
+        flex-direction: column
+        gap: 5px
+        align-self: flex-start
+
+        &__titulo
+          display: grid
+          grid-template-columns: 35px 1fr
+          gap: 10px
+          align-items: center
+
+          .icone
+            background: #afd8f0
+            width: 100%
+            height: auto
+            border-radius: 10px
+            display: flex
+            align-items: center
+            justify-content: center
+            padding: 6px
+            svg
+              width: 24px
+              height: 24px
+              color: $secondary-color
+
+          h1
+            font-size: 2em
+            color: $text-color
+            font-weight: 700
+            margin: 0px
+            +media-query(500px)
+              font-size: 1.6em
+
+        p
+          font-size: 1em
+          color: $text-color-secondary
+          margin: 0px
+          font-weight: 400
+
+      .box-register
+        display: flex
+        flex-direction: column
         width: 100%
-        +media-query(600px)
-          grid-template-columns: 1fr
+        max-width: 500px
 
         .item-input
           display: flex
           flex-direction: column
           gap: 5px
           width: 100%
-
+          margin-bottom: 15px
           label
-            font-size: 1em
+            font-size: 0.875em
             color: $text-color
             font-weight: 500
-
           input
-            padding: 20px 15px
+            padding: 15px
             border: none
             font-size: 1em
             color: $text-color
             border-radius: 10px
             &:active, &:focus
               outline: 1px solid $brand-color
-
           &__group
             display: flex
             flex-direction: row
@@ -59,7 +103,6 @@
             position: relative
             input
               width: 100%
-
             .icon
               display: flex
               align-items: center
@@ -73,21 +116,32 @@
           background: $tertiary-color
           padding: 14px 8px
           border: none
-          width: fit-content
-          min-width: 200px
+          width: 100%
           font-size: 1em
           color: $text-color-light
           font-weight: 600
           align-items: center
           justify-content: center
           cursor: pointer
-          grid-column: 2
           justify-self: flex-end
           transition: ease-in 0.2s
           border-radius: 10px
-          +media-query(600px)
-            grid-column: 1
-            width: 100%
+          box-shadow: 0px 4px 10px rgba(45, 130, 183, 0.3)
+          margin-top: 15px
 
           &:hover
             background: $accent-color-green
+            box-shadow: 0px 4px 10px rgba(123, 198, 123, 0.3)
+
+        .login-link
+          margin-top: 30px
+          font-size: 0.875em
+          color: $text-color-secondary
+          text-align: center
+
+          a
+            color: $tertiary-color
+            text-decoration: none
+            font-weight: 600
+            &:hover
+              text-decoration: underline

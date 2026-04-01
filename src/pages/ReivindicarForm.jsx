@@ -39,6 +39,11 @@ export default function ReivindicarForm() {
                 <label>Email</label>
                 <input type="email" {...register("email", {required: true})}/>
               </div>
+
+              <div className="form-grid-item">
+                <label>Email</label>
+                <input type="email" {...register("email", {required: true})}/>
+              </div>
             </form>
           </div>
         </div>

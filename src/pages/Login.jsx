@@ -2,8 +2,9 @@ import { useForm, Controller } from "react-hook-form";
 import { useState } from "react";
 import { IMaskInput } from "react-imask";
 import Header from "../components/Header";
-import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { FaEye, FaEyeSlash, FaCar } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { FiBox, FiCheckCircle, FiShield, FiSearch } from "react-icons/fi";
 
 export default function Login() {
   const {
@@ -21,18 +22,21 @@ export default function Login() {
 
   return (
     <>
-      <Header />
-      <section className="login-section">
-        <div className="login-section-container">
-          <div className="login-section-container__header">
-            <h1>Acesse sua conta</h1>
-            <p>Entre e localize seus itens perdidos</p>
-          </div>
+      <div className="login-section">
+        <div className="login-section-content">
+          <div className="box-conteudo">
+            <div className="box-texto">
+              <div className="box-texto__titulo">
+                <div className="icone">
+                  <FiSearch />
+                </div>
+                <h1>Bem-vindo de volta</h1>
+              </div>
+              <p>Insira suas credenciais para acessar o sistema</p>
+            </div>
 
-          <div className="login-section-container__content">
-            <form onSubmit={handleSubmit(onSubmit)}>
-              {/* Email */}
-              <div className="item-input">
+            <form className="box-login" onSubmit={handleSubmit(onSubmit)}>
+              <div className="item-input email">
                 <label>Email</label>
                 <input
                   type="email"
@@ -40,8 +44,7 @@ export default function Login() {
                 />
               </div>
 
-              {/* Senha */}
-              <div className="item-input">
+              <div className="item-input senha">
                 <label>Senha</label>
                 <div className="item-input__group">
                   <input
@@ -56,18 +59,58 @@ export default function Login() {
                   </span>
                 </div>
               </div>
-              <div className="box-buttons">
-                <Link to="/registre" className="btn-criar-conta">
-                  Crie sua conta
-                </Link>
-                <button type="submit" className="success-button">
-                  Entrar
-                </button>
-              </div>
+
+              <button type="submit" className="success-button">
+                Entrar
+              </button>
+
+              <span className="register-link">
+                Não tem uma conta? <Link to="/registre">Registre-se agora</Link>
+              </span>
             </form>
           </div>
         </div>
-      </section>
+
+        <div className="login-section-divisor">
+          <ul className="listagem-descricao">
+            <li className="listagem-descricao-item">
+              <div className="titulo">
+                <div className="box-icone">
+                  <FiBox />
+                </div>
+                <h3>Cadastro fácil</h3>
+              </div>
+              <p>Cadastre itens perdidos de forma rápida e intuitiva</p>
+            </li>
+
+            <li className="listagem-descricao-item">
+              <div className="titulo">
+                <div className="box-icone">
+                  <FiCheckCircle />
+                </div>
+                <h3>Reivindicação simples</h3>
+              </div>
+              <p>
+                Processo simplificado para reivindicar objetos com verificação
+                de identidade
+              </p>
+            </li>
+
+            <li className="listagem-descricao-item">
+              <div className="titulo">
+                <div className="box-icone">
+                  <FiShield />
+                </div>
+                <h3>Seguro e confiável</h3>
+              </div>
+              <p>
+                Sistema seguro com validação de propriedade para proteger seus
+                pertences
+              </p>
+            </li>
+          </ul>
+        </div>
+      </div>
     </>
   );
 }
