@@ -3,8 +3,8 @@ import { useState } from "react";
 import { IMaskInput } from "react-imask";
 import Header from "../components/Header";
 import { FaEye, FaEyeSlash, FaCar } from "react-icons/fa";
-import { Link } from "react-router-dom";
-import { FiBox, FiCheckCircle, FiShield, FiSearch } from "react-icons/fi";
+import { Link, useNavigate } from "react-router-dom";
+import { FiBox, FiCheckCircle, FiShield, FiLogIn } from "react-icons/fi";
 
 export default function Login() {
   const {
@@ -14,8 +14,11 @@ export default function Login() {
     formState: { errors },
   } = useForm();
 
+  const navigate = useNavigate();
+
   function onSubmit(data) {
-    console.log("Dados enviados:", data);
+    console.log("Login autenticado!");
+    navigate("/listagem");
   }
 
   const [mostrarSenha, setMostrarSenha] = useState(false);
@@ -28,7 +31,7 @@ export default function Login() {
             <div className="box-texto">
               <div className="box-texto__titulo">
                 <div className="icone">
-                  <FiSearch />
+                  <FiLogIn />
                 </div>
                 <h1>Bem-vindo de volta</h1>
               </div>
