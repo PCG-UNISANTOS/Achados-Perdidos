@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import Header from "../components/Header";
 import ItemListagem from "../components/ItemListagem";
 import { FaRegLightbulb } from "react-icons/fa";
 const apiUrl = import.meta.env.VITE_API_URL;
+import SideBar from "../components/SideBar";
 
 export default function Listagem() {
   const [itens, setItens] = useState([]);
@@ -11,9 +11,7 @@ export default function Listagem() {
   useEffect(() => {
     async function carregarItens() {
       try {
-        const resposta = await fetch(
-          `${apiUrl}/listar-itens`,
-        );
+        const resposta = await fetch(`${apiUrl}/listar-itens`);
         const dados = await resposta.json();
         setItens(dados);
       } catch (erro) {
@@ -28,8 +26,16 @@ export default function Listagem() {
 
   return (
     <>
-      <Header />
       <section className="listagem-section">
+        <SideBar />
+        <main className="listagem-conteudo"></main>
+      </section>
+    </>
+  );
+}
+
+{
+  /* <section className="listagem-section">
         <div className="listagem-section-container">
           <div className="listagem-section-container__header">
             <div className="titulo">
@@ -44,7 +50,5 @@ export default function Listagem() {
             ))}
           </ul>
         </div>
-      </section>
-    </>
-  );
+      </section> */
 }
