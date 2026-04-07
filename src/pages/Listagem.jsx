@@ -3,6 +3,7 @@ import ItemListagem from "../components/ItemListagem";
 import { FaRegLightbulb } from "react-icons/fa";
 const apiUrl = import.meta.env.VITE_API_URL;
 import SideBar from "../components/SideBar";
+import Filter from "../components/Filter";
 
 export default function Listagem() {
   const [itens, setItens] = useState([]);
@@ -28,7 +29,12 @@ export default function Listagem() {
     <>
       <section className="listagem-section">
         <SideBar />
-        <main className="listagem-conteudo"></main>
+        <main className="listagem-conteudo">
+          <header className="listagem-conteudo__header">
+            <h1>Encontrar Itens</h1>
+          </header>
+          <Filter />
+        </main>
       </section>
     </>
   );
