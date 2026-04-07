@@ -38,6 +38,13 @@
         &:hover, &:active, &:focus
           background: #F1F5F9
 
+        h5
+          font-size: 1em
+          color: #354b68
+
+        .search-icon
+          color: #354b68
+
         &.active
           background: #afd8f0
 
@@ -47,3 +54,37 @@
         .arrow-right
           display: none
           color: #354b68
+
+  .box-perfil
+    margin-top: auto
+    display: grid
+    grid-template-columns: 50px 1fr 16px
+    align-items: center
+    gap: 10px
+
+    &__inicial
+      display: flex
+      justify-content: center
+      align-items: center
+      width: 100%
+      height: 50px
+      background: #afd8f0
+      border-radius: 50%
+
+      h3
+        font-size: 1em
+        color: #354b68
+
+    &__detalhes
+      display: flex
+      flex-direction: column
+
+      h4
+        font-size: 1em
+        color: $text-color
+        font-weight: 600
+
+      span
+        font-size: 0.875em
+        color: $text-color
+        font-weight: 400

@@ -5,6 +5,7 @@ import Registre from "./pages/Registre";
 import ItemDetalhes from "./pages/ItemDetalhes";
 import Login from "./pages/Login";
 import ReivindicarForm from "./pages/ReivindicarForm";
+import Solicitacoes from "./pages/Solicitacoes";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/registre" element={<Registre />} />
           <Route path="/listagem" element={<Listagem />} />
+          <Route path="/solicitacoes" element={<Solicitacoes />} />
           <Route path="/item/:id" element={<ItemDetalhes />} />
           <Route path="/item/:id/reivindicar" element={<ReivindicarForm />} />
         </Routes>

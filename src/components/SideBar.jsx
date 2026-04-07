@@ -1,10 +1,15 @@
 import React from "react";
 import logoDataWise from "../Arquitetura/Icones/logo/logo.png";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { FiSearch, FiSend, FiLogOut } from "react-icons/fi";
 import { TiArrowRight } from "react-icons/ti";
 
 const SideBar = () => {
+  const activeLink = ({ isActive }) =>
+    isActive
+      ? "listagem-opcoes-item__link active"
+      : "listagem-opcoes-item__link";
+
   return (
     <aside className="sidebar">
       <div className="box-logo">
@@ -16,27 +21,27 @@ const SideBar = () => {
 
       <ul className="listagem-opcoes">
         <li className="listagem-opcoes-item">
-          <Link
+          <NavLink
             to="/listagem"
             title="Encontrar itens"
-            className="listagem-opcoes-item__link active"
+            className={activeLink}
           >
-            <FiSearch />
+            <FiSearch className="search-icon" />
             <h5>Encontrar itens</h5>
             <TiArrowRight className="arrow-right" />
-          </Link>
+          </NavLink>
         </li>
 
         <li className="listagem-opcoes-item">
-          <Link
-            to=""
+          <NavLink
+            to="/solicitacoes"
             title="Minhas solicitações"
-            className="listagem-opcoes-item__link"
+            className={activeLink}
           >
-            <FiSend />
+            <FiSend className="search-icon" />
             <h5>Solicitações</h5>
             <TiArrowRight className="arrow-right" />
-          </Link>
+          </NavLink>
         </li>
       </ul>
 
@@ -44,12 +49,13 @@ const SideBar = () => {
         <div className="box-perfil__inicial">
           <h3>JF</h3>
         </div>
+
         <div className="box-perfil__detalhes">
           <h4>João Falcão</h4>
           <span>Requisitante</span>
         </div>
 
-        <button>
+        <button className="logout-button">
           <FiLogOut />
         </button>
       </div>
