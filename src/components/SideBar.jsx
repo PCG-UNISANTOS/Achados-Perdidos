@@ -22,11 +22,10 @@ const SideBar = () => {
     navigate("/login");
   }
 
-  {
-    isOpen && <div className="overlay" onClick={toggleMenu}></div>;
-  }
   return (
     <>
+      {isOpen && <div className="overlay" onClick={toggleMenu}></div>}
+
       <aside className={`sidebar ${isOpen ? "open" : ""}`}>
         <div className="box-logo">
           <img
@@ -81,7 +80,10 @@ const SideBar = () => {
         </div>
       </aside>
 
-      <button className="menu-toggle" onClick={toggleMenu}>
+      <button
+        className={`menu-toggle ${isOpen ? "open" : ""}`}
+        onClick={toggleMenu}
+      >
         {isOpen ? <FiX size={24} /> : <FiMenu size={24} />}
       </button>
     </>
