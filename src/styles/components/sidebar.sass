@@ -9,6 +9,10 @@
   top: 0
   display: flex
   flex-direction: column
+  transition: transform 0.3s ease
+  +media-query(500px)
+    width: 250px
+    padding: 15px
 
   .box-logo
     display: flex
@@ -25,6 +29,7 @@
     margin-top: 30px
     display: flex
     flex-direction: column
+    gap: 5px
     &-item
       &__link
         display: grid
@@ -37,23 +42,30 @@
         text-decoration: none
         &:hover, &:active, &:focus
           background: #F1F5F9
+          transform: translatey(-2px)
+          h5
+            color: $text-color
+            font-weight: 600
+          .search-icon
+            color: $text-color
 
         h5
           font-size: 1em
-          color: #354b68
+          color: $text-color
+          font-weight: 400
 
         .search-icon
-          color: #354b68
+          color: $text-color
 
         &.active
-          background: #afd8f0
+          background: #F1F5F9
 
           .arrow-right
             display: block
 
         .arrow-right
           display: none
-          color: #354b68
+          color: $text-color
 
   .box-perfil
     margin-top: auto
@@ -61,6 +73,8 @@
     grid-template-columns: 50px 1fr 16px
     align-items: center
     gap: 10px
+    border-top: 1px solid $border-color
+    padding-top: 20px
 
     &__inicial
       display: flex
@@ -88,3 +102,35 @@
         font-size: 0.875em
         color: $text-color
         font-weight: 400
+
+.menu-toggle
+  position: fixed
+  top: 20px
+  right: 20px
+  background: none
+  border: none
+  cursor: pointer
+  z-index: 1001
+  display: none
+
+  svg
+    color: #333
+
++media-query(1000px)
+  .menu-toggle
+    display: flex
+
+  .sidebar
+    transform: translateX(-100%)
+
+    &.open
+      transform: translateX(0)
+
+.overlay
+  position: fixed
+  top: 0
+  left: 0
+  width: 100%
+  height: 100%
+  background: rgba(0,0,0,0.4)
+  z-index: 1000
