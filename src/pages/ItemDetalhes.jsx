@@ -32,6 +32,7 @@ export default function ItemDetalhes() {
     INDISPONIVEL: "Indisponível",
     DEVOLUCAO: "Em devolução",
     REIVINDICADO: "Reivindicado",
+    EM_ANALISE: "Em análise",
   };
 
   const imagens = item

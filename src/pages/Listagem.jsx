@@ -4,6 +4,7 @@ import { FaRegLightbulb } from "react-icons/fa";
 const apiUrl = import.meta.env.VITE_API_URL;
 import SideBar from "../components/SideBar";
 import Filter from "../components/Filter";
+import { itensMock } from "./../Arquitetura/JavaScript/mock";
 
 export default function Listagem() {
   const [itens, setItens] = useState([]);
@@ -34,6 +35,12 @@ export default function Listagem() {
             <h1>Encontrar Itens</h1>
           </header>
           <Filter />
+
+          <ul className="listagem-container">
+            {itensMock.map((item, index) => (
+              <ItemListagem key={index} {...item} />
+            ))}
+          </ul>
         </main>
       </section>
     </>
