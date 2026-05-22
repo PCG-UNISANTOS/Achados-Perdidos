@@ -22,3 +22,31 @@ button
   border: none
   color: inherit
   font: inherit
+
+.construcao-section
+  display: flex
+  width: 100%
+  min-height: 100vh
+  flex-direction: row
+  main
+    display: flex
+    flex-direction: column
+    width: 100%
+    max-height: 100vh
+    overflow-y: auto
+    justify-content: center
+    align-items: center
+    padding: 32px 40px
+    +media-query(700px)
+      padding: 32px 15px
+
+    h1
+      font-size: 2.25em
+      color: $text-color
+      font-weight: 700
+
+    svg
+      width: 100%
+      max-width: 150px
+      height: auto
+      margin-top: 20px
