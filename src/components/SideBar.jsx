@@ -6,6 +6,7 @@ import { TiArrowRight } from "react-icons/ti";
 
 const SideBar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const nomeUsuario = localStorage.getItem("nomeUsuario");
 
   function toggleMenu() {
     setIsOpen(!isOpen);
@@ -18,7 +19,8 @@ const SideBar = () => {
       : "listagem-opcoes-item__link";
 
   function onClickLogout() {
-    console.log("Logout realizado!");
+    localStorage.removeItem("token");
+    localStorage.removeItem("nomeUsuario");
     navigate("/login");
   }
 
@@ -66,7 +68,7 @@ const SideBar = () => {
           </div>
 
           <div className="box-perfil__detalhes">
-            <h4>João Falcão</h4>
+            <h4>{nomeUsuario}</h4>
             <span>Requisitante</span>
           </div>
 
