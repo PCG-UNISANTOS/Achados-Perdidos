@@ -9,7 +9,7 @@ export const itensMock = [
     local: { nome: "Praça Central" },
     imagem: {
       urlimagem1:
-        "https://images.unsplash.com/photo-1632661674596-618e5a2b1b0c",
+        "https://placehold.co/400x200?text=Produto",
     },
   },
   {
@@ -22,7 +22,7 @@ export const itensMock = [
     local: { nome: "Terminal Rodoviário" },
     imagem: {
       urlimagem1:
-        "https://images.unsplash.com/photo-1601597111158-2fceff292cdc",
+        "https://placehold.co/400x200?text=Produto",
     },
   },
   {
@@ -35,7 +35,7 @@ export const itensMock = [
     local: { nome: "Universidade" },
     imagem: {
       urlimagem1:
-        "https://images.unsplash.com/photo-1581605405669-fcdf81165afa",
+        "https://placehold.co/400x200?text=Produto",
     },
   },
   {
@@ -48,7 +48,7 @@ export const itensMock = [
     local: { nome: "Shopping Center" },
     imagem: {
       urlimagem1:
-        "https://images.unsplash.com/photo-1605733513597-a8f8341084e6",
+        "https://placehold.co/400x200?text=Produto",
     },
   },
   {
@@ -61,7 +61,7 @@ export const itensMock = [
     local: { nome: "Praia" },
     imagem: {
       urlimagem1:
-        "https://images.unsplash.com/photo-1511499767150-a48a237f0083",
+        "https://placehold.co/400x200?text=Produto",
     },
   },
   {
@@ -74,7 +74,7 @@ export const itensMock = [
     local: { nome: "Biblioteca" },
     imagem: {
       urlimagem1:
-        "https://images.unsplash.com/photo-1517336714731-489689fd1ca8",
+        "https://placehold.co/400x200?text=Produto",
     },
   },
   {
@@ -87,7 +87,7 @@ export const itensMock = [
     local: { nome: "Restaurante" },
     imagem: {
       urlimagem1:
-        "https://images.unsplash.com/photo-1584917865442-de89df76afd3",
+        "https://placehold.co/400x200?text=Produto",
     },
   },
   {
@@ -100,33 +100,7 @@ export const itensMock = [
     local: { nome: "Academia" },
     imagem: {
       urlimagem1:
-        "https://images.unsplash.com/photo-1511379938547-c1f69419868d",
+        "https://placehold.co/400x200?text=Produto",
     },
   },
-  // {
-  //   id: 9,
-  //   nome: "Documento RG",
-  //   descricao: "RG encontrado próximo ao banco.",
-  //   status: "REIVINDICADO",
-  //   dataachado: "2026-03-01",
-  //   categoria: "documentos",
-  //   local: { nome: "Banco" },
-  //   imagem: {
-  //     urlimagem1:
-  //       "https://images.unsplash.com/photo-1588776814546-ec7eae33f2f1",
-  //   },
-  // },
-  // {
-  //   id: 10,
-  //   nome: "Fone Bluetooth",
-  //   descricao: "Fone sem fio dentro de estojo.",
-  //   status: "DISPONIVEL",
-  //   dataachado: "2026-03-25",
-  //   categoria: "eletronicos",
-  //   local: { nome: "Parque" },
-  //   imagem: {
-  //     urlimagem1:
-  //       "https://images.unsplash.com/photo-1585386959984-a4155224a1ad",
-  //   },
-  // },
 ];
