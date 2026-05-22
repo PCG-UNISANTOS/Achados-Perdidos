@@ -1,9 +1,8 @@
-import React, { useState } from "react";
 import { FiSearch } from "react-icons/fi";
 import CustomSelect from "./CustomSelect";
 
 const optionsCategoria = [
-  { value: "todas", label: "Todas" },
+  { value: "", label: "Todas" },
   { value: "eletronicos", label: "Eletrônicos" },
   { value: "documentos", label: "Documentos" },
   { value: "roupas", label: "Roupas" },
@@ -14,22 +13,32 @@ const optionsCategoria = [
 ];
 
 const optionsStatus = [
-  { value: "todos", label: "Todos" },
-  { value: "disponivel", label: "Disponível" },
-  { value: "em-analise", label: "Em análise" },
-  { value: "reivindicado", label: "Reivindicado" },
+  { value: "", label: "Todos" },
+  { value: "DISPONIVEL", label: "Disponível" },
+  { value: "EM_ANALISE", label: "Em análise" },
+  { value: "REIVINDICADO", label: "Reivindicado" },
+  { value: "INDISPONIVEL", label: "Indisponível" },
 ];
 
-const Filter = () => {
-  const [categoria, setCategoria] = useState(null);
-  const [status, setStatus] = useState(null);
-
+export default function Filter({
+  busca,
+  setBusca,
+  categoria,
+  setCategoria,
+  status,
+  setStatus,
+}) {
   return (
     <div className="filtro">
       <div className="filtro-box">
         <div className="filtro-box__input">
           <FiSearch />
-          <input placeholder="Buscar por nome ou descrição..." />
+
+          <input
+            placeholder="Buscar por nome ou descrição..."
+            value={busca}
+            onChange={(e) => setBusca(e.target.value)}
+          />
         </div>
 
         <CustomSelect
@@ -48,6 +57,4 @@ const Filter = () => {
       </div>
     </div>
   );
-};
-
-export default Filter;
+}

@@ -9,22 +9,35 @@ import { itensMock } from "./../Arquitetura/JavaScript/mock";
 export default function Listagem() {
   const [itens, setItens] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [itensFiltrados, setItensFiltrados] = useState(itensMock);
 
+  const [busca, setBusca] = useState("");
+  const [categoria, setCategoria] = useState("");
+  const [status, setStatus] = useState("");
   useEffect(() => {
-    async function carregarItens() {
-      try {
-        const resposta = await fetch(`${apiUrl}/listar-itens`);
-        const dados = await resposta.json();
-        setItens(dados);
-      } catch (erro) {
-        console.error("Erro ao carregar itens:", erro);
-      } finally {
-        setLoading(false);
-      }
+    let resultado = itensMock;
+
+    // busca nome
+    if (busca) {
+      resultado = resultado.filter((item) =>
+        item.nome.toLowerCase().includes(busca.toLowerCase()),
+      );
     }
 
-    carregarItens();
-  }, []);
+    // categoria
+    if (categoria?.value) {
+      resultado = resultado.filter(
+        (item) => item.categoria === categoria.value,
+      );
+    }
+
+    // status
+    if (status?.value) {
+      resultado = resultado.filter((item) => item.status === status.value);
+    }
+
+    setItensFiltrados(resultado);
+  }, [busca, categoria, status]);
 
   return (
     <>
@@ -34,10 +47,17 @@ export default function Listagem() {
           <header className="listagem-conteudo__header">
             <h1>Encontrar Itens</h1>
           </header>
-          <Filter />
+          <Filter
+            busca={busca}
+            setBusca={setBusca}
+            categoria={categoria}
+            setCategoria={setCategoria}
+            status={status}
+            setStatus={setStatus}
+          />
 
           <ul className="listagem-container">
-            {itensMock.map((item, index) => (
+            {itensFiltrados.map((item, index) => (
               <ItemListagem key={index} {...item} />
             ))}
           </ul>
@@ -45,23 +65,4 @@ export default function Listagem() {
       </section>
     </>
   );
-}
-
-{
-  /* <section className="listagem-section">
-        <div className="listagem-section-container">
-          <div className="listagem-section-container__header">
-            <div className="titulo">
-              <h1>Itens localizados</h1>
-              <FaRegLightbulb />
-            </div>
-            <p>Navegue pelos itens encontrados e reivindique o seu!</p>
-          </div>
-          <ul className="listagem-section-container__content">
-            {itens.map((item, index) => (
-              <ItemListagem key={index} {...item} />
-            ))}
-          </ul>
-        </div>
-      </section> */
 }
