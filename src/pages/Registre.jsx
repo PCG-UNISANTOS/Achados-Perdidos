@@ -4,6 +4,8 @@ import { IMaskInput } from "react-imask";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { FiUserPlus } from "react-icons/fi";
 import { Link, useNavigate } from "react-router-dom";
+import { registerUser } from "../services/authService";
+import Loading from "../components/Loading";
 
 export default function Registre() {
   const {
@@ -14,16 +16,28 @@ export default function Registre() {
   } = useForm();
 
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
 
-  function onSubmit(data) {
-    console.log("Usuário cadastrado com sucesso");
-    navigate("/login");
+  async function onSubmit(data) {
+    try {
+      setLoading(true);
+      const response = await registerUser(data);
+      alert("Usuário cadastrado com sucesso!");
+      navigate("/");
+    } catch (error) {
+      console.error(error);
+
+      alert("Erro ao cadastrar usuário");
+    } finally {
+      setLoading(false);
+    }
   }
 
   const [mostrarSenha, setMostrarSenha] = useState(false);
 
   return (
     <>
+      {loading && <Loading />}
       <section className="register-section">
         <div className="register-section-content">
           <div className="box-conteudo">
@@ -40,19 +54,25 @@ export default function Registre() {
             <form className="box-register" onSubmit={handleSubmit(onSubmit)}>
               <div className="item-input">
                 <label>Nome completo</label>
-                <input type="text" {...register("nome", { required: true })} />
+                <input
+                  type="text"
+                  className={errors.nome ? "input-error" : ""}
+                  {...register("nome", { required: true })}
+                />
               </div>
               <div className="item-input">
                 <label>CPF</label>
                 <Controller
                   name="cpf"
                   control={control}
+                  defaultValue=""
                   rules={{ required: true }}
                   render={({ field }) => (
                     <IMaskInput
-                      {...field}
+                      className={errors.cpf ? "input-error" : ""}
                       mask="000.000.000-00"
-                      unmask={false}
+                      value={field.value}
+                      onAccept={(value) => field.onChange(value)}
                       placeholder="000.000.000-00"
                     />
                   )}
@@ -63,12 +83,14 @@ export default function Registre() {
                 <Controller
                   name="telefone"
                   control={control}
+                  defaultValue=""
                   rules={{ required: true }}
                   render={({ field }) => (
                     <IMaskInput
-                      {...field}
+                      className={errors.telefone ? "input-error" : ""}
                       mask="(00) 00000-0000"
-                      unmask={false}
+                      value={field.value}
+                      onAccept={(value) => field.onChange(value)}
                       placeholder="(00) 00000-0000"
                     />
                   )}
@@ -78,7 +100,11 @@ export default function Registre() {
                 <label>Email</label>
                 <input
                   type="email"
-                  {...register("email", { required: true })}
+                  className={errors.email ? "input-error" : ""}
+                  {...register("email", {
+                    required: true,
+                    pattern: /\S+@\S+\.\S+/,
+                  })}
                 />
               </div>
               <div className="item-input">
@@ -86,7 +112,10 @@ export default function Registre() {
                 <div className="item-input__group">
                   <input
                     type={mostrarSenha ? "text" : "password"}
-                    {...register("senha", { required: true })}
+                    className={errors.senha ? "input-error" : ""}
+                    {...register("senha", {
+                      required: true,
+                    })}
                   />
                   <span
                     className="icon"

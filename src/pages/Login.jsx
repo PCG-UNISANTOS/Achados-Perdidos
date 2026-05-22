@@ -2,9 +2,11 @@ import { useForm, Controller } from "react-hook-form";
 import { useState } from "react";
 import { IMaskInput } from "react-imask";
 import Header from "../components/Header";
+import Loading from "../components/Loading";
 import { FaEye, FaEyeSlash, FaCar } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import { FiBox, FiCheckCircle, FiShield, FiLogIn } from "react-icons/fi";
+import { loginUser } from "../services/authService";
 
 export default function Login() {
   const {
@@ -16,15 +18,29 @@ export default function Login() {
 
   const navigate = useNavigate();
 
-  function onSubmit(data) {
-    console.log("Login autenticado!");
-    navigate("/listagem");
+  const [loading, setLoading] = useState(false);
+
+  async function onSubmit(data) {
+    try {
+      setLoading(true);
+      const response = await loginUser(data);
+      localStorage.setItem("token", response.token);
+      localStorage.setItem("nomeUsuario", response.nome);
+      navigate("/listagem");
+    } catch (error) {
+      console.error(error);
+
+      alert("Email ou senha inválidos");
+    } finally {
+      setLoading(false);
+    }
   }
 
   const [mostrarSenha, setMostrarSenha] = useState(false);
 
   return (
     <>
+      {loading && <Loading />}
       <div className="login-section">
         <div className="login-section-content">
           <div className="box-conteudo">
@@ -43,7 +59,11 @@ export default function Login() {
                 <label>Email</label>
                 <input
                   type="email"
-                  {...register("email", { required: true })}
+                  className={errors.email ? "input-error" : ""}
+                  {...register("email", {
+                    required: true,
+                    pattern: /\S+@\S+\.\S+/,
+                  })}
                 />
               </div>
 
@@ -52,7 +72,10 @@ export default function Login() {
                 <div className="item-input__group">
                   <input
                     type={mostrarSenha ? "text" : "password"}
-                    {...register("senha", { required: true })}
+                    className={errors.senha ? "input-error" : ""}
+                    {...register("senha", {
+                      required: true,
+                    })}
                   />
                   <span
                     className="icon"
