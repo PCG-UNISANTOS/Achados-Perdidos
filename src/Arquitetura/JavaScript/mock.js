@@ -9,7 +9,7 @@ export const itensMock = [
     local: { nome: "Praça Central" },
     imagem: {
       urlimagem1:
-        "https://placehold.co/400x200?text=Produto",
+        "https://placehold.co/400x200",
     },
   },
   {
@@ -22,7 +22,7 @@ export const itensMock = [
     local: { nome: "Terminal Rodoviário" },
     imagem: {
       urlimagem1:
-        "https://placehold.co/400x200?text=Produto",
+        "https://placehold.co/400x200",
     },
   },
   {
@@ -35,7 +35,7 @@ export const itensMock = [
     local: { nome: "Universidade" },
     imagem: {
       urlimagem1:
-        "https://placehold.co/400x200?text=Produto",
+        "https://placehold.co/400x200",
     },
   },
   {
@@ -48,7 +48,7 @@ export const itensMock = [
     local: { nome: "Shopping Center" },
     imagem: {
       urlimagem1:
-        "https://placehold.co/400x200?text=Produto",
+        "https://placehold.co/400x200",
     },
   },
   {
@@ -61,7 +61,7 @@ export const itensMock = [
     local: { nome: "Praia" },
     imagem: {
       urlimagem1:
-        "https://placehold.co/400x200?text=Produto",
+        "https://placehold.co/400x200",
     },
   },
   {
@@ -74,7 +74,7 @@ export const itensMock = [
     local: { nome: "Biblioteca" },
     imagem: {
       urlimagem1:
-        "https://placehold.co/400x200?text=Produto",
+        "https://placehold.co/400x200",
     },
   },
   {
@@ -87,7 +87,7 @@ export const itensMock = [
     local: { nome: "Restaurante" },
     imagem: {
       urlimagem1:
-        "https://placehold.co/400x200?text=Produto",
+        "https://placehold.co/400x200",
     },
   },
   {
@@ -100,7 +100,7 @@ export const itensMock = [
     local: { nome: "Academia" },
     imagem: {
       urlimagem1:
-        "https://placehold.co/400x200?text=Produto",
+        "https://placehold.co/400x200",
     },
   },
 ];

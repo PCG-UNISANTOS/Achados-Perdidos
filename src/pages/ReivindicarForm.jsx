@@ -1,60 +1,106 @@
 import { useForm, Controller } from "react-hook-form";
 import { useState } from "react";
 import { IMaskInput } from "react-imask";
-import Header from "../components/Header";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
+import SideBar from "../components/SideBar";
+
 export default function ReivindicarForm() {
-  const{
+  const {
     register,
     control,
     handleSubmit,
-    formState: {errors},
-
+    formState: { errors },
   } = useForm();
 
-  function onSubmit(data){
+  function onSubmit(data) {
     console.log("Dados enviados:", data);
   }
 
   return (
     <>
-      <Header />
-      <section className="reivindicar-section">
-        <div className="reivindicar-section-container">
-          <div className="reivindicar-section-container__header">
-            <h1>Preencha o formulário</h1>
-            <p>Confirme que o item é seu e reivindique-o</p>
-          </div>
-
-          <div className="reivindicar-section-container__content">
-            <form className="form-grid" onSubmit={handleSubmit(onSubmit)}>
-              <div className="form-grid-item">
+      <section className="reivindicar-form-section">
+        <SideBar />
+        <main className="reivindicar-form-conteudo">
+          <div className="reivindicar-form-conteudo-box">
+            <div className="titulo-descricao">
+              <h1>Formulário de Reivindicação</h1>
+              <p>
+                Esse formulário deve ser preenchido corretamente e com
+                informações que comprovem a posse do item perdido. Após o envio,
+                nossa equipe irá analisar as informações fornecidas e entrar em
+                contato para confirmar a reivindicação. Lembre-se de que é
+                importante fornecer detalhes precisos e verdadeiros para
+                facilitar o processo de recuperação do item perdido.
+              </p>
+            </div>
+            <form className="box-form" onSubmit={handleSubmit(onSubmit)}>
+              <div className="item-input">
                 <label>Nome completo</label>
-                <input type="text" {...register("nome", {required: true})}/>
+                <input
+                  type="text"
+                  className={errors.nome ? "input-error" : ""}
+                  {...register("nome", { required: true })}
+                />
               </div>
-
-              <div className="form-grid-item">
-                <label>Email</label>
-                <input type="email" {...register("email", {required: true})}/>
+              <div className="item-input">
+                <label>CPF</label>
+                <Controller
+                  name="cpf"
+                  control={control}
+                  defaultValue=""
+                  rules={{ required: true }}
+                  render={({ field }) => (
+                    <IMaskInput
+                      className={errors.cpf ? "input-error" : ""}
+                      mask="000.000.000-00"
+                      value={field.value}
+                      onAccept={(value) => field.onChange(value)}
+                      placeholder="000.000.000-00"
+                    />
+                  )}
+                />
               </div>
-
-              <div className="form-grid-item">
+              <div className="item-input">
+                <label>Telefone</label>
+                <Controller
+                  name="telefone"
+                  control={control}
+                  defaultValue=""
+                  rules={{ required: true }}
+                  render={({ field }) => (
+                    <IMaskInput
+                      className={errors.telefone ? "input-error" : ""}
+                      mask="(00) 00000-0000"
+                      value={field.value}
+                      onAccept={(value) => field.onChange(value)}
+                      placeholder="(00) 00000-0000"
+                    />
+                  )}
+                />
+              </div>
+              <div className="item-input">
                 <label>Email</label>
-                <input type="email" {...register("email", {required: true})}/>
+                <input
+                  type="email"
+                  className={errors.email ? "input-error" : ""}
+                  {...register("email", {
+                    required: true,
+                    pattern: /\S+@\S+\.\S+/,
+                  })}
+                />
               </div>
             </form>
           </div>
-        </div>
+        </main>
       </section>
-     
     </>
   );
 }
 
-
- {/* <section className="login-section">
+{
+  /* <section className="login-section">
         <div className="login-section-container">
           <div className="login-section-container__header">
             <h1>Acesse sua conta</h1>
@@ -99,4 +145,5 @@ export default function ReivindicarForm() {
             </form>
           </div>
         </div>
-      </section> */}
+      </section> */
+}

@@ -1,63 +1,52 @@
-.reivindicar-section
-  margin-block: 30px
-  &-container
-    @extend .wrapper
+.reivindicar-form-section
+  display: flex
+  width: 100%
+  min-height: 100vh
+  flex-direction: row
+
+  .reivindicar-form-conteudo
     display: flex
     flex-direction: column
-    gap: 20px
+    width: 100%
+    padding-inline: 40px
+    padding-block: 32px
+    +media-query(1000px)
+      padding-block: 50px
+      padding-inline: 15px
 
-    &__header
+    &-box
+      background: #fff
+      border: 1px solid $border-color
+      border-radius: $border-radius
+      padding: 15px
       display: flex
       flex-direction: column
-
-      h1
-        font-size: 2em
-        color: $text-color
-        font-weight: 700
-
-      p
-        font-size: 1.2em
-        color: $text-color-secondary
-        font-weight: 400
-
-    &__content
-      display: flex
       width: 100%
 
+      .titulo-descricao
+        display: flex
+        flex-direction: column
+        gap: 10px
+        justify-content: center
+        align-items: center
+        border-bottom: 1px solid $border-color
+        padding-bottom: 15px
 
+        h1
+          font-size: 24px
+          font-weight: 600
+          color: $text-color
 
+        p
+          font-size: 16px
+          color: $text-color
+          line-height: 22px
+          color: $text-color-secondary
 
+      .box-form
+        display: flex
+        flex-direction: column
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        .item-input
+          input
+            background: #D6E0EA

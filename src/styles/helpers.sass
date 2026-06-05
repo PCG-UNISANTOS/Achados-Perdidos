@@ -50,3 +50,39 @@ button
       max-width: 150px
       height: auto
       margin-top: 20px
+
+.item-input
+  display: flex
+  flex-direction: column
+  gap: 5px
+  width: 100%
+  margin-bottom: 15px
+  label
+    font-size: 0.875em
+    color: $text-color
+    font-weight: 500
+  input
+    padding: 15px
+    border: none
+    font-size: 1em
+    color: $text-color
+    border-radius: 10px
+    &:active, &:focus
+      outline: 1px solid $brand-color
+  .input-error
+    outline: 1px solid #ff4d4f !important
+  &__group
+    display: flex
+    flex-direction: row
+    width: 100%
+    align-items: center
+    position: relative
+    input
+      width: 100%
+      .icon
+        display: flex
+        align-items: center
+        position: absolute
+        right: 0px
+        cursor: pointer
+        padding-right: 25px
