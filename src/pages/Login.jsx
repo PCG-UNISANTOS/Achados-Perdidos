@@ -26,6 +26,7 @@ export default function Login() {
       const response = await loginUser(data);
       localStorage.setItem("token", response.token);
       localStorage.setItem("nomeUsuario", response.nome);
+      localStorage.setItem("idUsuario", 12345);
       navigate("/listagem");
     } catch (error) {
       console.error(error);
