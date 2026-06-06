@@ -3,21 +3,23 @@ import CustomSelect from "./CustomSelect";
 
 const optionsCategoria = [
   { value: "", label: "Todas" },
-  { value: "eletronicos", label: "Eletrônicos" },
-  { value: "documentos", label: "Documentos" },
-  { value: "roupas", label: "Roupas" },
-  { value: "acessorios", label: "Acessórios" },
-  { value: "chaves", label: "Chaves" },
-  { value: "bolsas", label: "Bolsas" },
-  { value: "outros", label: "Outros" },
+  {
+    value: "Eletrônicos (Celular, Notebook, Carregador)",
+    label: "Eletrônicos",
+  },
+  { value: "Documentos (RG, CNH, Carteirinha)", label: "Documentos" },
+  { value: "Vestuário (Casaco, Boné, Mochila)", label: "Vestuário" },
+  { value: "Chaves e Chaveiros", label: "Chaves" },
+  { value: "Outros", label: "Outros" },
 ];
 
 const optionsStatus = [
   { value: "", label: "Todos" },
   { value: "DISPONIVEL", label: "Disponível" },
-  { value: "EM_ANALISE", label: "Em análise" },
+  { value: "DEVOLUÇÃO", label: "Em devolução" },
+  { value: "EM ANÁLISE", label: "Em análise" },
   { value: "REIVINDICADO", label: "Reivindicado" },
-  { value: "INDISPONIVEL", label: "Indisponível" },
+  { value: "INDISPONÍVEL", label: "Indisponível" },
 ];
 
 export default function Filter({

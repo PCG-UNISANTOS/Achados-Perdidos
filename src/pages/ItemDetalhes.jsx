@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { getItemById } from "../services/itemService";
+import Loading from "../components/Loading";
 import {
   HiOutlineLocationMarker,
   HiOutlineCalendar,
@@ -22,24 +24,35 @@ import "swiper/css/scrollbar";
 export default function ItemDetalhes() {
   const { id } = useParams();
   const [item, setItem] = useState(null);
+  const [loading, setLoading] = useState(false);
 
-  // useEffect(() => {
-  //   fetch(`https://api-achados.onrender.com/api/listar-itens/${id}`)
-  //     .then((res) => res.json())
-  //     .then((data) => setItem(data))
-  //     .catch((err) => console.log(err));
-  // }, [id]);
+  useEffect(() => {
+    const carregarItem = async () => {
+      try {
+        setLoading(true);
+        const data = await getItemById(id);
+        setItem(data);
+      } catch (error) {
+        console.error("Erro ao buscar item:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    carregarItem();
+  }, [id]);
 
   const statusText = {
     DISPONIVEL: "Disponível",
-    INDISPONIVEL: "Indisponível",
-    DEVOLUCAO: "Em devolução",
+    INDISPONÍVEL: "Indisponível",
+    DEVOLUÇÃO: "Em devolução",
     REIVINDICADO: "Reivindicado",
-    EM_ANALISE: "Em análise",
+    EM_ANÁLISE: "Em análise",
   };
 
   return (
     <>
+      {loading && <Loading />}
       <section className="item-detalhes-section">
         <SideBar />
         <main className="item-detalhes-conteudo">
@@ -54,49 +67,31 @@ export default function ItemDetalhes() {
               // onSwiper={(swiper) => console.log(swiper)}
               // onSlideChange={() => console.log("slide change")}
             >
-              {itemMock.imagem.urlimagem1 && (
-                <SwiperSlide>
+              {item?.imagensUrl?.map((imagemUrl, index) => (
+                <SwiperSlide key={index}>
                   <img
-                    src={itemMock.imagem.urlimagem1}
-                    alt="imagem 1 do item perdido"
+                    src={imagemUrl}
+                    alt={`Imagem ${index + 1} do item perdido`}
                   />
                 </SwiperSlide>
-              )}
-              {itemMock.imagem.urlimagem2 && (
-                <SwiperSlide>
-                  <img
-                    src={itemMock.imagem.urlimagem2}
-                    alt="imagem 2 do item perdido"
-                  />
-                </SwiperSlide>
-              )}
-              {itemMock.imagem.urlimagem3 && (
-                <SwiperSlide>
-                  <img
-                    src={itemMock.imagem.urlimagem3}
-                    alt="imagem 3 do item perdido"
-                  />
-                </SwiperSlide>
-              )}
+              ))}
             </Swiper>
           </div>
 
           <div className="box-texto">
             <div className="titulo-tag">
-              <h2>{itemMock?.nome}</h2>
-              <span className={itemMock?.status}>
-                {statusText[itemMock?.status]}
-              </span>
+              <h2>{item?.nome}</h2>
+              <span className={item?.status}>{statusText[item?.status]}</span>
             </div>
 
-            <p>{itemMock?.descricao}</p>
+            <p>{item?.categoriaNome}</p>
 
             <div className="box-detalhes">
               <div className="box-detalhes__local">
                 <HiOutlineLocationMarker />
                 <div className="titulo">
                   <h4>Local</h4>
-                  <span>{itemMock?.local.nome}</span>
+                  <span>{item?.localNome}</span>
                 </div>
               </div>
 
@@ -105,7 +100,7 @@ export default function ItemDetalhes() {
                 <div className="titulo">
                   <h4>Data</h4>
                   <time>
-                    {new Date(itemMock?.dataachado).toLocaleDateString("pt-BR")}
+                    {new Date(item?.dataAchado).toLocaleDateString("pt-BR")}
                   </time>
                 </div>
               </div>
@@ -114,22 +109,22 @@ export default function ItemDetalhes() {
                 <HiPaperClip />
                 <div className="titulo">
                   <h4>Informações adicionais</h4>
-                  <p>{itemMock?.local.descricao}</p>
+                  <p>{item?.descricao}</p>
                 </div>
               </div>
             </div>
 
-            {itemMock.status === "DISPONIVEL" ? (
+            {item?.statusNome === "DISPONIVEL" ? (
               <Link
                 to={`/item/${id}/reivindicar/`}
-                className={`redirect-form ${itemMock.status}`}
+                className={`redirect-form ${item?.statusNome}`}
                 title="Reivindicar item"
               >
                 Reivindicar item
               </Link>
             ) : (
-              <div className={`redirect-form ${itemMock.status}`}>
-                {statusText[itemMock.status]}
+              <div className={`redirect-form ${item?.statusNome}`}>
+                {statusText[item?.statusNome]}
               </div>
             )}
           </div>
