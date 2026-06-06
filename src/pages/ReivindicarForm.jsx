@@ -1,8 +1,11 @@
 import { useForm, Controller } from "react-hook-form";
+import { useParams } from "react-router-dom";
 import { useState } from "react";
 import { IMaskInput } from "react-imask";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { reivindicarItem } from "../services/reivindicacaoService";
+import Loading from "../components/Loading";
 
 import SideBar from "../components/SideBar";
 
@@ -13,13 +16,26 @@ export default function ReivindicarForm() {
     handleSubmit,
     formState: { errors },
   } = useForm();
+  const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
+  const { id } = useParams();
 
-  function onSubmit(data) {
-    console.log("Dados enviados:", data);
+  async function onSubmit(dataForm) {
+    try {
+      setLoading(true);
+      const idUsuario = localStorage.getItem("idUsuario");
+      const data = await reivindicarItem(dataForm, id, idUsuario);
+    } catch (error) {
+      console.error("Erro ao enviar formulário de reivindicação:", error);
+    } finally {
+      setLoading(false);
+      navigate("/solicitacoes");
+    }
   }
 
   return (
     <>
+      {loading && <Loading />}
       <section className="reivindicar-form-section">
         <SideBar />
         <main className="reivindicar-form-conteudo">
@@ -37,60 +53,25 @@ export default function ReivindicarForm() {
             </div>
             <form className="box-form" onSubmit={handleSubmit(onSubmit)}>
               <div className="item-input">
-                <label>Nome completo</label>
-                <input
-                  type="text"
-                  className={errors.nome ? "input-error" : ""}
-                  {...register("nome", { required: true })}
-                />
-              </div>
-              <div className="item-input">
-                <label>CPF</label>
-                <Controller
-                  name="cpf"
-                  control={control}
-                  defaultValue=""
-                  rules={{ required: true }}
-                  render={({ field }) => (
-                    <IMaskInput
-                      className={errors.cpf ? "input-error" : ""}
-                      mask="000.000.000-00"
-                      value={field.value}
-                      onAccept={(value) => field.onChange(value)}
-                      placeholder="000.000.000-00"
-                    />
-                  )}
-                />
-              </div>
-              <div className="item-input">
-                <label>Telefone</label>
-                <Controller
-                  name="telefone"
-                  control={control}
-                  defaultValue=""
-                  rules={{ required: true }}
-                  render={({ field }) => (
-                    <IMaskInput
-                      className={errors.telefone ? "input-error" : ""}
-                      mask="(00) 00000-0000"
-                      value={field.value}
-                      onAccept={(value) => field.onChange(value)}
-                      placeholder="(00) 00000-0000"
-                    />
-                  )}
-                />
-              </div>
-              <div className="item-input">
-                <label>Email</label>
-                <input
-                  type="email"
-                  className={errors.email ? "input-error" : ""}
-                  {...register("email", {
-                    required: true,
-                    pattern: /\S+@\S+\.\S+/,
+                <label>Descrição de prova do item</label>
+
+                <textarea
+                  rows={5}
+                  placeholder="Descreva que este item é seu, especificando alguma particularidade ou informação"
+                  className={errors.descricao ? "input-error" : ""}
+                  {...register("descricao", {
+                    required: "A descrição é obrigatória",
                   })}
                 />
               </div>
+
+              <button
+                type="submit"
+                className="success-button"
+                title="Enviar Reivindicação"
+              >
+                Enviar Reivindicação
+              </button>
             </form>
           </div>
         </main>
