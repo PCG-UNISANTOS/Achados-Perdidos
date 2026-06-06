@@ -8,8 +8,7 @@ export const itensMock = [
     categoria: "eletronicos",
     local: { nome: "Praça Central" },
     imagem: {
-      urlimagem1:
-        "https://placehold.co/400x200",
+      urlimagem1: "https://placehold.co/400x200",
     },
   },
   {
@@ -21,8 +20,7 @@ export const itensMock = [
     categoria: "documentos",
     local: { nome: "Terminal Rodoviário" },
     imagem: {
-      urlimagem1:
-        "https://placehold.co/400x200",
+      urlimagem1: "https://placehold.co/400x200",
     },
   },
   {
@@ -34,8 +32,7 @@ export const itensMock = [
     categoria: "bolsas",
     local: { nome: "Universidade" },
     imagem: {
-      urlimagem1:
-        "https://placehold.co/400x200",
+      urlimagem1: "https://placehold.co/400x200",
     },
   },
   {
@@ -47,8 +44,7 @@ export const itensMock = [
     categoria: "chaves",
     local: { nome: "Shopping Center" },
     imagem: {
-      urlimagem1:
-        "https://placehold.co/400x200",
+      urlimagem1: "https://placehold.co/400x200",
     },
   },
   {
@@ -60,8 +56,7 @@ export const itensMock = [
     categoria: "acessorios",
     local: { nome: "Praia" },
     imagem: {
-      urlimagem1:
-        "https://placehold.co/400x200",
+      urlimagem1: "https://placehold.co/400x200",
     },
   },
   {
@@ -73,21 +68,19 @@ export const itensMock = [
     categoria: "eletronicos",
     local: { nome: "Biblioteca" },
     imagem: {
-      urlimagem1:
-        "https://placehold.co/400x200",
+      urlimagem1: "https://placehold.co/400x200",
     },
   },
   {
     id: 7,
     nome: "Bolsa Feminina",
     descricao: "Bolsa vermelha com maquiagem.",
-    status: "DEVOLUCAO",
+    status: "DEVOLUÇÃO",
     dataachado: "2026-03-08",
     categoria: "bolsas",
     local: { nome: "Restaurante" },
     imagem: {
-      urlimagem1:
-        "https://placehold.co/400x200",
+      urlimagem1: "https://placehold.co/400x200",
     },
   },
   {
@@ -99,8 +92,7 @@ export const itensMock = [
     categoria: "acessorios",
     local: { nome: "Academia" },
     imagem: {
-      urlimagem1:
-        "https://placehold.co/400x200",
+      urlimagem1: "https://placehold.co/400x200",
     },
   },
 ];
