@@ -21,6 +21,7 @@ const SideBar = () => {
   function onClickLogout() {
     localStorage.removeItem("token");
     localStorage.removeItem("nomeUsuario");
+    localStorage.removeItem("idUsuario");
     navigate("/login");
   }
 

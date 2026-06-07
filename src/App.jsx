@@ -52,7 +52,7 @@ function App() {
             path="/solicitacoes"
             element={
               <PrivateRoutes>
-                <Construcao />
+                <Solicitacoes />
               </PrivateRoutes>
             }
           />

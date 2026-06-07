@@ -1,0 +1,102 @@
+.solicitacoes-section
+  display: flex
+  flex-direction: row
+  width: 100%
+  min-height: 100vh
+
+  .solicitacoes-flex
+    display: flex
+    flex-direction: column
+    gap: 30px
+    max-height: 100vh
+    overflow-y: auto
+    width: 100%
+    padding: 32px 40px
+    +media-query(700px)
+      padding: 32px 15px
+
+    &__header
+      display: flex
+      width: 100%
+
+      h1
+        font-size: 2.25em
+        color: $text-color
+        font-weight: 700
+
+    &__content
+      @extend .lista-limpa
+      display: flex
+      flex-direction: column
+      gap: 10px
+
+      .item
+        display: grid
+        grid-template-columns: 150px 1fr
+        gap: 30px
+        padding: 15px
+        border: 1px solid $border-color
+        background: #fff
+        border-radius: $border-radius
+
+        .box-img
+          width: 100%
+          height: 100%
+          img
+            width: 100%
+            height: 100%
+            object-fit: cover
+            border-radius: $border-radius
+
+        .box-info-detalhe
+          display: flex
+          flex-direction: row
+          width: 100%
+          justify-content: space-between
+          align-items: center
+
+          .infos
+            @extend .lista-limpa
+            display: flex
+            flex-direction: column
+            gap: 10px
+            &-item
+              display: grid
+              grid-template-columns: 20px 1fr
+              gap: 10px
+              align-items: center
+              svg
+                width: 100%
+                height: auto
+                path, circle
+                  fill: $brand-color
+              h2
+                font-size: 0.875em
+                color: $text-color
+                font-weight: 400
+                span
+                  font-weight: 700
+                  color: $brand-color
+
+          .redirect
+            display: flex
+            flex-direction: row
+            align-items: center
+            align-self: flex-end
+            gap: 5px
+            text-decoration: none
+            font-size: 0.875em
+            color: $text-color-light
+            font-weight: 700
+            background: $brand-color
+            border-radius: $border-radius
+            padding: 8px 15px
+            transition: transform 0.3s ease
+            &:hover
+              transform: translateY(-2px)
+
+            svg
+              width: 20px
+              height: auto
+              path
+                fill: #fff
