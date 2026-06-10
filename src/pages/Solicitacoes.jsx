@@ -59,7 +59,7 @@ export default function Solicitacoes() {
                   </li>
                 </ul>
                 <Link
-                  to="solicitacoes/detalhes/3"
+                  to="/solicitacoes/detalhes/3"
                   className="redirect"
                   title="Ver detalhes"
                 >

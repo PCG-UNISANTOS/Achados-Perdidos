@@ -7,6 +7,7 @@ import Construcao from "./pages/Construcao";
 import Login from "./pages/Login";
 import ReivindicarForm from "./pages/ReivindicarForm";
 import Solicitacoes from "./pages/Solicitacoes";
+import SolicitacoesDetalhes from "./pages/SolicitacoesDetalhes";
 
 import PrivateRoutes from "./routes/PrivateRoutes";
 import PublicRoutes from "./routes/PublicRoutes";
@@ -53,6 +54,14 @@ function App() {
             element={
               <PrivateRoutes>
                 <Solicitacoes />
+              </PrivateRoutes>
+            }
+          />
+          <Route
+            path="/solicitacoes/detalhes/:id"
+            element={
+              <PrivateRoutes>
+                <SolicitacoesDetalhes />
               </PrivateRoutes>
             }
           />
