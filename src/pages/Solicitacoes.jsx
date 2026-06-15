@@ -28,7 +28,7 @@ export default function Solicitacoes() {
         <SideBar />
         <main className="solicitacoes-flex">
           <div className="solicitacoes-flex__header">
-            <h1>Minhas Solicitações</h1>
+            <h1>Minhas Solicitações Teste Smurf</h1>
           </div>
 
           <ul className="solicitacoes-flex__content">
