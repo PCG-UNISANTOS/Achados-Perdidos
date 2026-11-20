@@ -1,12 +1,20 @@
 import React, { useState } from "react";
 import logoDataWise from "../Arquitetura/Icones/logo/logo.png";
 import { NavLink, useNavigate } from "react-router-dom";
-import { FiSearch, FiSend, FiLogOut, FiMenu, FiX } from "react-icons/fi";
+import { FiLogOut, FiMenu, FiX } from "react-icons/fi";
 import { TiArrowRight } from "react-icons/ti";
 
-const SideBar = () => {
+const SideBar = ({ items, perfil = "Requisitante" }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const nomeUsuario = localStorage.getItem("nomeUsuario");
+  const nomeUsuario = localStorage.getItem("nomeUsuario") || "";
+
+  // iniciais calculadas a partir do nome (em vez do "JF" fixo)
+  const iniciais = nomeUsuario
+    .split(" ")
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((parte) => parte[0].toUpperCase())
+    .join("");
 
   function toggleMenu() {
     setIsOpen(!isOpen);
@@ -38,39 +46,25 @@ const SideBar = () => {
         </div>
 
         <ul className="listagem-opcoes">
-          <li className="listagem-opcoes-item">
-            <NavLink
-              to="/listagem"
-              title="Encontrar itens"
-              className={activeLink}
-            >
-              <FiSearch className="search-icon" />
-              <h5>Encontrar itens</h5>
-              <TiArrowRight className="arrow-right" />
-            </NavLink>
-          </li>
-
-          <li className="listagem-opcoes-item">
-            <NavLink
-              to="/solicitacoes"
-              title="Minhas solicitações"
-              className={activeLink}
-            >
-              <FiSend className="search-icon" />
-              <h5>Solicitações</h5>
-              <TiArrowRight className="arrow-right" />
-            </NavLink>
-          </li>
+          {items.map(({ path, title, label, icon: Icon }) => (
+            <li className="listagem-opcoes-item" key={path}>
+              <NavLink to={path} title={title} className={activeLink}>
+                <Icon className="search-icon" />
+                <h5>{label}</h5>
+                <TiArrowRight className="arrow-right" />
+              </NavLink>
+            </li>
+          ))}
         </ul>
 
         <div className="box-perfil">
           <div className="box-perfil__inicial">
-            <h3>JF</h3>
+            <h3>{iniciais}</h3>
           </div>
 
           <div className="box-perfil__detalhes">
             <h4>{nomeUsuario}</h4>
-            <span>Requisitante</span>
+            <span>{perfil}</span>
           </div>
 
           <button

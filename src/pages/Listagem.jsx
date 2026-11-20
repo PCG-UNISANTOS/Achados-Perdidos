@@ -4,6 +4,7 @@ import SideBar from "../components/SideBar";
 import Filter from "../components/Filter";
 import { getItens } from "../services/itemService";
 import Loading from "../components/Loading";
+import { userMenu, adminMenu } from "../config/menu";
 
 export default function Listagem() {
   const [itens, setItens] = useState([]);
@@ -61,7 +62,7 @@ export default function Listagem() {
     <>
       {loading && <Loading />}
       <section className="listagem-section">
-        <SideBar />
+        <SideBar items={userMenu} />
 
         <main className="listagem-conteudo">
           <header className="listagem-conteudo__header">

@@ -5,6 +5,7 @@ import { FaUser, FaCalendar } from "react-icons/fa";
 import { BiSolidFileFind } from "react-icons/bi";
 import SideBar from "../components/SideBar";
 import Loading from "../components/Loading";
+import { userMenu, adminMenu } from "../config/menu";
 
 export default function Solicitacoes() {
   const [itens, setItens] = useState([]);
@@ -25,7 +26,7 @@ export default function Solicitacoes() {
     <>
       {loading && <Loading />}
       <section className="solicitacoes-section">
-        <SideBar />
+        <SideBar items={userMenu} />
         <main className="solicitacoes-flex">
           <div className="solicitacoes-flex__header">
             <h1>Minhas Solicitações</h1>

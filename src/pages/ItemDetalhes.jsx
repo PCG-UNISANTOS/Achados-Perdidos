@@ -11,6 +11,7 @@ import {
   HiPaperClip,
 } from "react-icons/hi";
 
+import { userMenu, adminMenu } from "../config/menu";
 import { itemMock } from "./../Arquitetura/JavaScript/mockDetalhe";
 
 import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
@@ -54,7 +55,7 @@ export default function ItemDetalhes() {
     <>
       {loading && <Loading />}
       <section className="item-detalhes-section">
-        <SideBar />
+        <SideBar items={userMenu} />
         <main className="item-detalhes-conteudo">
           <div className="slider-container">
             <Swiper

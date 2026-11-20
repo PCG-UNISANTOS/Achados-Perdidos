@@ -8,6 +8,7 @@ import { reivindicarItem } from "../services/reivindicacaoService";
 import Loading from "../components/Loading";
 
 import SideBar from "../components/SideBar";
+import { userMenu, adminMenu } from "../config/menu";
 
 export default function ReivindicarForm() {
   const {
@@ -37,7 +38,7 @@ export default function ReivindicarForm() {
     <>
       {loading && <Loading />}
       <section className="reivindicar-form-section">
-        <SideBar />
+        <SideBar items={userMenu} />
         <main className="reivindicar-form-conteudo">
           <div className="reivindicar-form-conteudo-box">
             <div className="titulo-descricao">

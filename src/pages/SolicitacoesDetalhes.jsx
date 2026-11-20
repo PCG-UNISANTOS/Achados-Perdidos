@@ -5,6 +5,7 @@ import { FaUser, FaCalendar } from "react-icons/fa";
 import { BiSolidFileFind } from "react-icons/bi";
 import SideBar from "../components/SideBar";
 import Loading from "../components/Loading";
+import { userMenu } from "../config/menu";
 
 export default function SolicitacoesDetalhes() {
   const [itens, setItens] = useState([]);
@@ -25,7 +26,7 @@ export default function SolicitacoesDetalhes() {
     <>
       {loading && <Loading />}
       <section className="solicitacoes-detalhes-section">
-        <SideBar />
+        <SideBar items={userMenu} />
         <main className="solicitacoes-detalhes-section__conteudo">
           <div className="box-titulo">
             <h1>
