@@ -1,0 +1,130 @@
+.local-content
+  display: flex
+  flex-direction: column
+  margin-inline: 40px
+  margin-bottom: 30px
+  border: 1px solid $border-color
+  border-radius: $border-radius
+  +media-query(700px)
+    margin-inline: 15px
+
+  &-titulo
+    display: flex
+    flex-direction: row
+    justify-content: space-between
+    align-items: center
+    background: #F7F9FD
+    padding: 10px
+    border-radius: $border-radius $border-radius 0px 0px
+    border-bottom: 1px solid $border-color
+    +media-query(700px)
+      flex-direction: row
+      align-items: flex-start
+      gap: 15px
+
+    &-opcoes
+      display: grid
+      grid-template-columns: 1fr 0.2fr 0.2fr
+      gap: 30px
+      width: 100%
+      +media-query(700px)
+        grid-template-columns: 1fr
+        gap: 0px
+      span
+        font-size: 1em
+        font-weight: 600
+        color: $text-color
+
+    .botao-novo
+      @extend %transition
+      background: #fff
+      padding: 10px 20px
+      border-radius: $border-radius
+      border: 1px solid $border-color
+      display: flex
+      align-items: center
+      gap: 10px
+      text-decoration: none
+      width: max-content
+      span
+        @extend %transition
+        font-size: 0.875em
+        font-weight: 600
+        color: $text-color
+
+      svg
+        circle
+          @extend %transition
+          color: $text-color
+        path
+          @extend %transition
+          color: $text-color
+
+      &:hover
+        background: $brand-color
+        span
+          color: $text-color-light
+        svg
+          path
+            color: $text-color-light
+          circle
+            color: $text-color-light
+
+  &-listagem
+    @extend .lista-limpa
+    display: flex
+    flex-direction: column
+    background: #fff
+    border-radius: 0px 0px $border-radius $border-radius
+
+    &-item
+      display: grid
+      grid-template-columns: 1fr 0.2fr 0.2fr
+      gap: 30px
+      border-bottom: 1px solid $border-color
+      padding: 15px 153px 15px 10px
+      &:last-child
+        border-bottom: none
+      +media-query(700px)
+        grid-template-columns: 1fr
+        gap: 5px
+        padding: 15px 10px
+
+      .box-texto
+        display: flex
+        align-items: center
+        h3
+          font-size: 1em
+          font-weight: 400
+          color: $text-color
+
+      .box-status
+        display: flex
+        align-items: center
+        background: $disponivel
+        padding: 5px 15px
+        width: fit-content
+        border-radius: $border-radius
+        span
+          font-size: 0.875em
+          font-weight: 600
+          color: $text-color-light
+
+        &.ativo
+          background: $disponivel
+
+        &.inativo
+          background: $indisponivel
+
+      .box-acoes
+        display: flex
+        align-items: center
+        +media-query(700px)
+          justify-content: flex-end
+        .botao-editar
+          display: flex
+          svg
+            width: 20px
+            height: 20px
+            path
+              color: $text-color
