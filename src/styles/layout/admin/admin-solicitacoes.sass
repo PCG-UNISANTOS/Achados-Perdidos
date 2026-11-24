@@ -1,0 +1,73 @@
+.listagem-solicitacoes
+  display: flex
+  flex-direction: column
+  margin-inline: 40px
+  margin-bottom: 30px
+  gap: 15px
+  +media-query(700px)
+    margin-inline: 15px
+
+  &-item
+    display: flex
+    flex-direction: row
+    gap: 30px
+    background: #fff
+    border-radius: $border-radius
+    border: 1px solid $border-color
+    padding: 15px
+
+    .box-icone
+      display: flex
+      justify-content: center
+      align-items: center
+      background: #F7F9FD
+      padding: 10px
+      border-radius: $border-radius
+
+      svg
+        width: 25px
+        height: 25px
+
+    .box-item
+      display: flex
+      align-items: center
+      h3
+        font-size: 1em
+        color: $text-color
+        font-weight: 500
+
+    .box-solicitante
+      display: flex
+      align-items: center
+      h3
+        font-size: 1em
+        color: $text-color
+        font-weight: 500
+
+    .box-acoes
+      @extend %transition
+      display: flex
+      gap: 10px
+      align-items: center
+      margin-left: auto
+      background: #F7F9FD
+      padding: 10px 20px
+      border: 1px solid $border-color
+      border-radius: $border-radius
+      text-decoration: none
+      &:hover
+        background: $brand-color
+        span
+          color: #fff
+        svg
+          path
+            color: #fff
+      span
+        @extend %transition
+        font-size: 1em
+        color: $text-color-secondary
+
+      svg
+        path
+          @extend %transition
+          color: $text-color-secondary
